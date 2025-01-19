@@ -12,3 +12,10 @@ require("nvim-tree").setup({
   },
 })
 
+-- cheatsheet
+require("cheatsheet").setup({
+bundled_cheatsheets = {
+         disabled = {'nerd-fonts'},
+     },
+})
+
