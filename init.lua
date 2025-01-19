@@ -12,6 +12,15 @@ require("nvim-tree").setup({
   },
 })
 
+-- editor options
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "▸ ",
+  trail = "•",
+  extends = "❯",
+  precedes = "❮",
+  nbsp = "␣",
+}
 -- onSave Actions
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.ts,*tsx",
