@@ -1,5 +1,4 @@
-require("config.lazy")
-require("lualine").setup()
+require("plugins")
 
 vim.cmd.colorscheme('neosolarized')
 
