@@ -12,6 +12,15 @@ require("nvim-tree").setup({
   },
 })
 
+-- onSave Actions
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.ts,*tsx",
+    callback = function()
+        vim.fn.CocAction('runCommand', 'editor.action.organizeImport')
+        vim.fn.CocAction('runCommand', 'editor.action.format')
+    end,
+})
+
 -- cheatsheet
 require("cheatsheet").setup({
 bundled_cheatsheets = {
