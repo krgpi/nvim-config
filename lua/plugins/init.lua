@@ -58,20 +58,44 @@ require("lazy").setup({
         end,
     },
     {
-        "svrana/neosolarized.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require("neosolarized").setup({
-                comment_italics = true,
-                background_set = false,
-            })
-            vim.cmd.colorscheme("neosolarized")
+        'NTBBloodbath/doom-one.nvim',
+        lazy = false, -- カラースキームはすぐに読み込む必要があるため
+        priority = 1000, -- 他のプラグインより先に読み込む
+        init = function()
+            -- カーソルの色を設定
+            vim.g.doom_one_cursor_coloring = false
+            -- ターミナルの色を設定
+            vim.g.doom_one_terminal_colors = true
+            -- イタリックコメントを無効化
+            vim.g.doom_one_italic_comments = false
+            -- TreeSitterサポートを有効化
+            vim.g.doom_one_enable_treesitter = true
+            -- 診断テキストの色設定
+            vim.g.doom_one_diagnostics_text_color = false
+            -- 背景の透過を無効化
+            vim.g.doom_one_transparent_background = false
+            -- Pumblendの透過設定
+            vim.g.doom_one_pumblend_enable = false
+            vim.g.doom_one_pumblend_transparency = 20
+
+            -- プラグイン統合の設定
+            vim.g.doom_one_plugin_neorg = true
+            vim.g.doom_one_plugin_barbar = false
+            vim.g.doom_one_plugin_telescope = false
+            vim.g.doom_one_plugin_neogit = true
+            vim.g.doom_one_plugin_nvim_tree = true
+            vim.g.doom_one_plugin_dashboard = true
+            vim.g.doom_one_plugin_startify = true
+            vim.g.doom_one_plugin_whichkey = true
+            vim.g.doom_one_plugin_indent_blankline = true
+            vim.g.doom_one_plugin_vim_illuminate = true
+            vim.g.doom_one_plugin_lspsaga = false
         end,
-        dependencies = {
-            "tjdevries/colorbuddy.nvim",
-        },
+        config = function()
+            vim.cmd.colorscheme('doom-one')
+        end,
     },
+
     {
         'nvim-tree/nvim-tree.lua'
     },
@@ -218,7 +242,7 @@ require("lazy").setup({
     {
         'romgrk/barbar.nvim',
         dependencies = {
-            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+            'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
             'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         },
         init = function() vim.g.barbar_auto_setup = false end,

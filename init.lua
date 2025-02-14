@@ -1,7 +1,7 @@
 require("plugins")
 require("options")
 
-vim.cmd.colorscheme('neosolarized')
+vim.cmd.colorscheme('doom-one')
 -- nvim-tree
 
 -- disable netrw at the very start of your init.lua
