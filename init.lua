@@ -26,11 +26,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.ts,*.tsx,*.lua",
     callback = function()
         vim.cmd [[Prettier]]
+         vim.lsp.buf.format()
+    vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
+    vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
         --        vim.fn.CocAction('runCommand', 'editor.action.organizeImport')
         --        vim.fn.CocAction('runCommand', 'editor.action.format')
     end,
 })
-
 vim.api.nvim_create_user_command("OR", function()
     --  vim.fn.CocAction('runCommand', 'editor.action.organizeImport')
 end, {})
