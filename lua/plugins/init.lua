@@ -121,6 +121,9 @@ require("lazy").setup({
                 ["vtsls"] = function()
                     lspconfig["vtsls"].setup({})
                 end,
+                ["gopls"] = function()
+                    lspconfig["gopls"].setup({})
+                end,
             })
 
             vim.api.nvim_create_autocmd("LspAttach", {
