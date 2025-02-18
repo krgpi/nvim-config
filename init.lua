@@ -24,7 +24,7 @@ require("nvim-tree").setup({
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.ts,*.tsx,*.lua",
     callback = function()
-        --    vim.lsp.buf.format()
+        -- vim.lsp.buf.format()
         -- vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
         vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
         vim.cmd [[Prettier]]
@@ -37,6 +37,8 @@ require("cheatsheet").setup({
         disabled = { 'nerd-fonts' },
     },
 })
+
+-- onOpen Actions
 
 local api = require("nvim-tree.api")
 
