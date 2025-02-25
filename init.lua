@@ -50,3 +50,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
         api.tree.find_file({ buf = vim.fn.bufnr() })
     end,
 })
+
+-- terminal window title
+-- タイトルをフォルダ名に設定する
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        local start_dir = vim.fn.getcwd()
+        local dir_name = vim.fn.fnamemodify(start_dir, ':t')
+        if dir_name ~= "" then
+            vim.opt.titlestring = dir_name
+            vim.opt.title = true
+        end
+    end,
+})
+
