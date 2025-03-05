@@ -6,11 +6,11 @@ vim.keymap.set("x", "<M-k>", ":move '<-2<CR>gv=gv")
 -- editor options
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = "▸ ",
-    trail = "•",
-    extends = "❯",
-    precedes = "❮",
-    nbsp = "␣",
+	tab = "▸ ",
+	trail = "•",
+	extends = "❯",
+	precedes = "❮",
+	nbsp = "␣",
 }
 vim.opt.clipboard = "unnamedplus"
 vim.opt.whichwrap = "b,s,[,],<,>"
@@ -23,7 +23,7 @@ vim.opt.showcmd = true
 vim.opt.hlsearch = true
 vim.opt.hidden = true
 vim.opt.backup = true
-vim.opt.backupdir = os.getenv("HOME") .. '/.vim/backup'
+vim.opt.backupdir = os.getenv("HOME") .. "/.vim/backup"
 vim.opt.winblend = 20
 vim.opt.pumblend = 20
 vim.opt.termguicolors = true
@@ -36,17 +36,17 @@ vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.nrformats = "bin,hex"
 vim.opt.swapfile = false
-vim.opt.formatoptions:remove('t')
-vim.opt.formatoptions:append('mM')
+vim.opt.formatoptions:remove("t")
+vim.opt.formatoptions:append("mM")
 
-vim.api.nvim_create_autocmd({ 'TermOpen' }, {
-    pattern = '*',
-    command = 'startinsert',
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+	pattern = "*",
+	command = "startinsert",
 })
 -- eqaul to below setting
-vim.cmd 'autocmd TermOpen * startinsert'
+vim.cmd("autocmd TermOpen * startinsert")
 
-vim.cmd [[
+vim.cmd([[
 if executable('fcitx5')
   let g:fcitx_state = 1
   augroup fcitx_savestate
@@ -56,7 +56,7 @@ if executable('fcitx5')
     autocmd InsertEnter * call system(g:fcitx_state == 1 ? 'fcitx5-remote -c': 'fcitx5-remote -o')
   augroup END
 endif
-]]
+]])
 
 -- https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.lua
 
@@ -74,6 +74,6 @@ vim.opt.signcolumn = "yes"
 
 -- Autocomplete
 function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
 end
