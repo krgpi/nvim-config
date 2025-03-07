@@ -73,6 +73,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
+-- nvim tree
+-- シングルクリックでファイルやフォルダを開く
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "NvimTree",
 	callback = function(ev)
