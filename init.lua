@@ -72,3 +72,22 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "NvimTree",
+	callback = function(ev)
+		-- シングルクリックで開く
+		vim.keymap.set("n", "<LeftMouse>", function()
+			-- 現在のマウス位置を取得
+			local mouse_pos = vim.fn.getmousepos()
+
+			-- カーソルをマウス位置に移動
+			vim.api.nvim_win_set_cursor(0, { mouse_pos.line, mouse_pos.column - 1 })
+
+			-- ノードを開く
+			vim.defer_fn(function()
+				require("nvim-tree.api").node.open.edit()
+			end, 10) -- 10ミリ秒の遅延
+		end, { buffer = ev.buf })
+	end,
+})
